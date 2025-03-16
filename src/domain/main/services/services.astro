@@ -1,0 +1,59 @@
+---
+import Section from '@/components/ui-wrappers/section.astro';
+import { ServicesData } from './servicesData';
+import ServiceCard from './serviceCard.astro';
+import Card from '@/components/ui-wrappers/card.astro';
+import { Button } from '@/components/ui-entities/button.tsx';
+import Star4 from '@/assets/svg/star-4.svg';
+import Star7 from '@/assets/svg/star-7.svg';
+import Star10 from '@/assets/svg/star-10.svg';
+import Smile from '@/assets/svg/smile.svg';
+import Ellipse from '@/assets/svg/ellipse.svg';
+---
+
+<Section
+  title='Services'
+  text='At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:'
+>
+  <div class='768:gap-10 768:grid-cols-2 grid grid-cols-1 gap-7'>
+    {ServicesData.map(it => <ServiceCard {...it} />)}
+  </div>
+  <div class='mb-[24px]'>
+    <Card bg='neutral'>
+      <div class='768:p-15 relative flex h-full justify-between p-12'>
+        <div class='768:gap-6 768:max-w-[500px] flex flex-col gap-5'>
+          <p class='h3'>Let’s make things happen</p>
+          <p class='p2'>
+            Contact us today to learn more about how our digital marketing services can help your
+            business grow and succeed online.
+          </p>
+          <Button className='768:w-max'>Get your free proposal</Button>
+        </div>
+        <div class='768:block relative hidden h-full w-[360px] shrink-0'>
+          <div class='absolute top-[50%] h-[394px] w-full translate-y-[-50%]'>
+            <Star4
+              class='text-accent absolute bottom-[24px] left-[70px] z-1 size-23 rotate-[45deg]'
+            />
+            <Star7 class='absolute right-0 bottom-[54px] z-1 size-41 text-[#d9d9d9]' />
+            <Star10
+              class='absolute top-0 left-34 z-1 size-52 text-transparent'
+              style='--stroke-color: var(--color-dark)'
+            />
+            <Smile
+              class='text-dark smile absolute bottom-[146px] left-[90px] z-1 size-31'
+              style='--eye-color: var(--color-white)'
+            />
+            <div
+              class='absolute bottom-[110px] left-0 z-0 flex h-30 flex-col gap-7 text-black'
+              aria-hidden='true'
+            >
+              <Ellipse class='absolute top-0 w-[338px]' />
+              <Ellipse class='absolute top-[50%] w-[338px] translate-y-[-50%]' />
+              <Ellipse class='absolute bottom-0 w-[338px]' />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+</Section>
