@@ -1,0 +1,55 @@
+.trigger {
+  &[data-state=open] .plusPart {
+    animation: lineOpen 0.2s ease-out forwards;
+  }
+
+  &[data-state=closed] .plusPart {
+    animation: lineClose 0.2s ease-out forwards;
+  }
+
+  @keyframes lineOpen {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: 90deg;
+    }
+  }
+
+  @keyframes lineClose {
+    from {
+      rotate: 90deg;
+    }
+    to {
+      rotate: 0deg;
+    }
+  }
+}
+
+.content {
+  &[data-state=open] {
+    animation: accordion-down 0.2s ease-out;;
+  }
+
+  &[data-state=closed] {
+    animation: accordion-up 0.2s ease-out;;
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
