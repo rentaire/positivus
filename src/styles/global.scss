@@ -1,0 +1,6 @@
+@use './fonts/fontFace.scss';
+
+html {
+  font-family: 'Space Grotesk', 'Adjusted Trebuchet MS Fallback', 'Trebuchet MS', 'sans-serif';
+  color: var(--color-black);
+}

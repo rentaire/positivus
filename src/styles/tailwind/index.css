@@ -1,0 +1,21 @@
+@import './breakpoints.css';
+@import './colors.css';
+@import './radiuses.css';
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
+
+/*noinspection CssInvalidAtRule*/
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --spacing: 4px;
+}
+
+@layer utilities {
+  .text-fill-white {
+    -webkit-text-fill-color: var(--color-white);
+  }
+  .text-fill-black {
+    -webkit-text-fill-color: var(--color-black);
+  }
+}

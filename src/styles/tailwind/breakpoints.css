@@ -1,0 +1,8 @@
+@theme inline {
+  --breakpoint-320: 321px;
+  --breakpoint-420: 421px;
+  --breakpoint-576: 577px;
+  --breakpoint-768: 769px;
+  --breakpoint-920: 921px;
+  --breakpoint-1100: 1101px;
+}

@@ -1,0 +1,14 @@
+@use './variables/breakpoints' as bp;
+
+.container {
+  max-width: 1264px;
+  width: 100%;
+  padding: 0 12px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: #{bp.$breakpoint-768}) {
+  .container {
+    padding: 0 32px;
+  }
+}
