@@ -1,0 +1,45 @@
+@use 'sass:list';
+@use '../variables/breakpoints' as bp;
+
+:root {
+  --breakpoint-768: 769px;
+}
+
+@mixin generate-fonts($config) {
+  @each $key, $vars in $config {
+    $font: list.nth($vars, 2);
+    $line-height: if(list.length($font) > 1, list.nth($font, 2), normal);
+
+    .#{$key} {
+      font-weight: #{list.nth($vars, 1)};
+      font-size: #{list.nth($font, 1)};
+      line-height: $line-height;
+    }
+
+    @media screen and (min-width: #{bp.$breakpoint-420}) {
+      $font: list.nth($vars, 3);
+      $line-height: if(list.length($font) > 1, list.nth($font, 2), normal);
+
+      .#{$key} {
+        font-size: #{list.nth($font, 1)};
+        line-height: $line-height;
+      }
+    }
+  }
+}
+
+
+
+:root {
+  @include generate-fonts((
+    // @formatter:off
+    h1:            500 (43px, ) (60px, ),
+    h2:            500 (36px, ) (40px, ),
+    h3:            500 (26px, ) (30px, ),
+    h4:            500 (18px, ) (20px, ),
+    p1:            400 (16px, 24px) (20px, 28px),
+    p2:            400 (16px, 24px) (18px, ),
+    l1:            400 (14px, ) (16px, 28px),
+    // @formatter:on
+  ));
+}

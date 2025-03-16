@@ -1,0 +1,26 @@
+/* space-grotesk-regular - latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/space-grotesk-v16-latin-regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* space-grotesk-500 - latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/space-grotesk-v16-latin-500.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adjusted Trebuchet MS Fallback';
+  src: local(Trebuchet MS);
+  size-adjust: 106%;
+  ascent-override: 92%;
+  descent-override: 28%;
+  line-gap-override: 0%;
+}
