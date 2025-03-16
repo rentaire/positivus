@@ -1,0 +1,5 @@
+<svg viewBox="0 0 24 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12.0923" r="11.904" />
+<ellipse cx="8.06401" cy="9.50031" rx="1.92" ry="3.84" fill="var(--eye-color)"/>
+<ellipse cx="15.936" cy="9.50031" rx="1.92" ry="3.84" fill="var(--eye-color)"/>
+</svg>
