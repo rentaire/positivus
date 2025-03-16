@@ -1,0 +1,98 @@
+---
+import Heading from '@/components/ui-wrappers/heading.astro';
+import Card from '@/components/ui-wrappers/card.astro';
+import { type StyleType } from '@/types/StyleType';
+import { type ServiceCard } from './servicesData';
+import { Link } from '@/components/ui-entities/link.tsx';
+import { getImage } from 'astro:assets';
+
+interface Props extends ServiceCard {
+  style: StyleType;
+}
+
+const { style, title, picture } = Astro.props;
+const optimizedBg = await getImage({ src: picture, format: 'webp' });
+
+const styles: Record<StyleType, { heading: StyleType; icon: StyleType; text: StyleType }> = {
+  accent: {
+    heading: 'light',
+    icon: 'accent',
+    text: 'dark',
+  },
+  light: {
+    heading: 'accent',
+    icon: 'accent',
+    text: 'dark',
+  },
+  dark: {
+    heading: 'light',
+    icon: 'dark',
+    text: 'light',
+  },
+};
+---
+
+<Card bg={style} withShadow={true}>
+  <div class='wrapper 1100:h-[310px]'>
+    <h3 class='flex flex-col items-start'>
+      {
+        title.map(it => (
+          <Heading as='span' font='h3' variant={styles[style].heading}>
+            {it}
+          </Heading>
+        ))
+      }
+    </h3>
+    <Link text={styles[style].text} icon={styles[style].icon} type='leftArrow' href='/'>
+      <p class='1100:inline 768:hidden 420:inline hidden'>Learn more</p>
+    </Link>
+    <div
+      style={`background-image:url(${optimizedBg.src})`}
+      class='min-h-[130px] bg-contain bg-right bg-no-repeat'
+      aria-hidden='true'
+    >
+    </div>
+  </div>
+</Card>
+
+<style lang='scss'>
+  @use '@/styles/variables/breakpoints' as bp;
+
+  .wrapper {
+    padding: 32px;
+    display: grid;
+    grid-template-areas:
+      'b1 b1'
+      'b2 b3';
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    row-gap: 28px;
+    column-gap: 8px;
+
+    a {
+      align-self: end;
+    }
+
+    @for $i from 1 through 3 {
+      > :nth-child(#{$i}) {
+        grid-area: b#{$i};
+      }
+    }
+  }
+
+  @media screen and (min-width: #{bp.$breakpoint-920}) {
+    .wrapper {
+      padding: 50px;
+    }
+  }
+
+  @media screen and (min-width: 520px) and (max-width: #{bp.$breakpoint-768}), screen and (min-width: #{bp.$breakpoint-1100}) {
+    .wrapper {
+      grid-template-areas:
+        'b1 b3'
+        'b2 b3';
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+    }
+  }
+</style>

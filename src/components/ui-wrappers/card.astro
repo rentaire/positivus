@@ -1,0 +1,29 @@
+---
+import { cn } from '@/utils/cn';
+import type { ExtendedStyleType } from '@/types/StyleType';
+
+interface Props {
+  bg?: ExtendedStyleType;
+  withShadow?: boolean;
+}
+
+const { bg, withShadow } = Astro.props;
+
+const bgVariants: Record<ExtendedStyleType, string> = {
+  accent: 'bg-accent',
+  neutral: 'bg-neutral',
+  light: 'bg-white',
+  dark: 'bg-dark',
+};
+---
+
+<div class={cn(withShadow && 'cardShadow', 'rounded-45 h-full', bg && bgVariants[bg])}>
+  <slot />
+</div>
+
+<style>
+  .cardShadow {
+    border: 1px solid var(--color-dark);
+    filter: drop-shadow(0 5px 0 var(--color-dark));
+  }
+</style>

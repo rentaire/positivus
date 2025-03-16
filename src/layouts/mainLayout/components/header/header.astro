@@ -1,0 +1,19 @@
+---
+import Logo from '@/components/global/logo.astro';
+import { Button } from '@/components/ui-entities/button.tsx';
+import { Navigation } from './navigation.tsx';
+import layout from '@/styles/layouts.module.scss';
+import { cn } from '@/utils/cn';
+---
+
+<header class={cn(layout.container, 'py-6! sticky top-0 bg-white z-9999')}>
+  <div class='420:h-[70px] flex h-[24px] items-center justify-between gap-x-1'>
+    <div class='420:max-h-[36px] h-full'>
+      <Logo size='md' />
+    </div>
+    <div class='1100:flex-row flex flex-row-reverse items-center gap-x-10'>
+      <Navigation client:only='react' />
+      <Button variant='transparent' className='768:block hidden'> Request a quote </Button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,58 @@
+---
+import Section from '@/components/ui-wrappers/section.astro';
+import { TeamMembers } from './teamMembers';
+import Card from '@/components/ui-wrappers/card.astro';
+import LinkedIn from '@/assets/svg/linkedin.svg';
+import { SeparateLine } from '@/components/ui-entities/separateLine.tsx';
+import { Image } from 'astro:assets';
+---
+
+<Section
+  title='Team'
+  text='Meet the skilled and experienced team behind our successful digital marketing strategies'
+>
+  <div class='768:gap-10 768:grid-cols-2 1100:grid-cols-3 grid gap-y-7'>
+    {
+      TeamMembers.map(it => (
+        <Card withShadow={true} bg='light'>
+          <div class='768:px-9 768:gap-y-7 flex flex-col gap-y-5 p-10'>
+            <div class='relative flex items-end gap-x-5'>
+              <div class='relative'>
+                <div class='member relative z-1 h-[102px] w-[102px]'>
+                  <Image src={it.photo} alt={`Photo of ${it.name}`} />
+                  <div class='bg-accent absolute inset-0 opacity-100 mix-blend-multiply' />
+                </div>
+                <div class='bg absolute top-1.5 left-2 h-full w-full' />
+              </div>
+              <div class='768:gap-y-0 flex flex-col gap-y-1'>
+                <p class='h4'>{it.name}</p>
+                <p class='p2'>{it.position}</p>
+              </div>
+              <a
+                href={it.linkedIn}
+                target='_blank'
+                class='bg-dark text-accent absolute top-0 right-0 size-[34px] rounded-full'
+              >
+                <LinkedIn />
+              </a>
+            </div>
+            <SeparateLine color='dark' />
+            <p class='p2'>{it.description}</p>
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+</Section>
+
+<style lang='scss'>
+  .member {
+    mask-image: url('./src/assets/img/team/mask.webp');
+    mask-repeat: no-repeat;
+  }
+
+  .bg {
+    background-image: url('./src/assets/img/team/mask.webp');
+    background-repeat: no-repeat;
+  }
+</style>

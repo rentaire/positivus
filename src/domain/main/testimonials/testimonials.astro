@@ -1,0 +1,16 @@
+---
+import Section from '@/components/ui-wrappers/section.astro';
+import Card from '@/components/ui-wrappers/card.astro';
+import { TestimonialsCarousel } from './components/testimonialsCarousel';
+---
+
+<Section
+  title='Testimonials'
+  text='Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services'
+>
+  <Card bg='dark'>
+    <div class='768:pt-21 768:pb-17 pt-7 pb-15'>
+      <TestimonialsCarousel client:load />
+    </div>
+  </Card>
+</Section>

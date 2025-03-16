@@ -1,0 +1,47 @@
+---
+import layout from '@/styles/layouts.module.scss';
+import { Image } from 'astro:assets';
+import { CompaniesData } from './companiesData';
+import { cn } from '@/utils/cn';
+---
+
+<div class={cn(layout.container, 'overflow-hidden')}>
+  <div class='flex h-[48px] gap-x-24 overflow-hidden'>
+    <div class='queue 768:gap-x-24 gap-x-16'>
+      {
+        CompaniesData.map(it => (
+          <Image src={it.photo} alt={`Logo of ${it.name}`} class='h-full w-auto grayscale-100' />
+        ))
+      }
+    </div>
+    <div class='queue 768:gap-x-24 gap-x-16' aria-hidden='true'>
+      {
+        CompaniesData.map(it => (
+          <Image src={it.photo} alt={`Logo of ${it.name}`} class='h-full w-auto grayscale-100' />
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style lang='scss'>
+  .queue {
+    animation: scroll 16s infinite linear;
+    flex-shrink: 0;
+    display: flex;
+    min-width: 100%;
+    width: max-content;
+    align-items: center;
+    height: inherit;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - 96px));
+    }
+  }
+</style>

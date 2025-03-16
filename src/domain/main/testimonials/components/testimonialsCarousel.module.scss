@@ -1,0 +1,27 @@
+.bubble {
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: solid 24px transparent;
+    border-bottom: 0;
+    border-top-color: var(--color-accent);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: solid 24px transparent;
+    border-bottom: 0;
+    border-top-color: var(--color-dark);
+  }
+}

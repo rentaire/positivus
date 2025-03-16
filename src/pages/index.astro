@@ -1,0 +1,26 @@
+---
+import '@/styles/tailwind/index.css';
+import '@/styles/index.scss';
+import MainLayout from '@/layouts/mainLayout/mainLayout.astro';
+import Hero from '@/domain/main/hero/hero.astro';
+import Services from '@/domain/main/services/services.astro';
+import CaseStudies from '@/domain/main/caseStudies/caseStudies.astro';
+import WorkingProcess from '@/domain/main/wokringProcess/workingProcess.astro';
+import Team from '@/domain/main/team/team.astro';
+import Testimonials from '@/domain/main/testimonials/testimonials.astro';
+import Companies from '@/domain/main/companies/companies.astro';
+import ContactUs from '@/domain/main/contactUs/contactUs.astro';
+---
+
+<MainLayout>
+  <div class='flex flex-col gap-y-17'>
+    <Hero />
+    <Companies />
+  </div>
+  <Services />
+  <CaseStudies />
+  <WorkingProcess />
+  <Team />
+  <Testimonials />
+  <ContactUs />
+</MainLayout>

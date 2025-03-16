@@ -1,0 +1,18 @@
+---
+import Heading from './heading.astro';
+interface Props {
+  title: string;
+  text: string;
+}
+
+const { title, text } = Astro.props;
+---
+
+<div
+  class='768:flex-row 768:self-start flex flex-col items-center gap-x-8 gap-y-8 self-center whitespace-pre-line'
+>
+  <Heading as='h2' font='h2'>
+    {title}
+  </Heading>
+  <p class='p 768:text-start max-w-[580px] text-center'>{text}</p>
+</div>

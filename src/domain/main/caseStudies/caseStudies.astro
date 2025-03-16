@@ -1,0 +1,76 @@
+---
+import Section from '@/components/ui-wrappers/section.astro';
+import { CaseStudiesData } from './caseStudiesData';
+import { Link } from '@/components/ui-entities/link.tsx';
+import { SeparateLine } from '@/components/ui-entities/separateLine.tsx';
+---
+
+<Section
+  title='Case Studies'
+  text='Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies'
+>
+  <div
+    class='slider 768:bg-dark 1100:gap-x-16 768:gap-x-8 768:rounded-45 768:px-15 768:py-20 flex flex-row justify-between gap-x-5'
+  >
+    {
+      CaseStudiesData.map((it, index) => (
+        <>
+          {index === 1 && (
+            <SeparateLine color='light' direction='vertical' className='768:block hidden' />
+          )}
+          <div class='rounded-45 768:rounded-0 bg-dark 768:w-auto 768:px-0 768:py-0 slide 768:justify-start flex h-auto flex-col justify-between gap-y-4 px-12 py-10'>
+            <p class='p2 text-white'>{it}</p>
+            <Link type='rightArrow' text='accent' icon='accent'>
+              Learn more
+            </Link>
+          </div>
+          {index === 1 && <SeparateLine color='light' direction='vertical' />}
+        </>
+      ))
+    }
+  </div>
+</Section>
+
+<style lang='scss'>
+  @use '@/styles/variables/breakpoints' as bp;
+
+  .slider {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .slide {
+    flex: 0 0 calc(100% - 40px);
+    width: 100%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  @media screen and (min-width: #{bp.$breakpoint-768}) {
+    .slide {
+      display: flex;
+      column-gap: 20px;
+      flex: auto;
+    }
+
+    .slide:nth-child(2) {
+      &:before,
+      &:after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        display: block;
+        background: var(--color-white);
+      }
+    }
+  }
+</style>

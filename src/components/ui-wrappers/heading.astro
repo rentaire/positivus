@@ -1,0 +1,30 @@
+---
+import type { StyleType } from '@/types/StyleType';
+import { cva } from 'class-variance-authority';
+import { cn } from '@/utils/cn';
+
+interface Props {
+  variant?: StyleType;
+  as: 'h2' | 'h3' | 'h4';
+  font: 'h2' | 'h3' | 'h4';
+}
+
+const { variant, as: Tag = 'h1', font } = Astro.props;
+
+const variants = cva('h2 px-2 rounded-7', {
+  variants: {
+    variant: {
+      accent: 'bg-accent text-black',
+      light: 'bg-white text-black',
+      dark: 'bg-dark text-white',
+    },
+  },
+  defaultVariants: {
+    variant: 'accent',
+  },
+});
+---
+
+<Tag class={cn(variants({ variant }), font, 'text-nowrap')}>
+  <slot />
+</Tag>

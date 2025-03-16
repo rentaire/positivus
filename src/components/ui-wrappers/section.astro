@@ -1,0 +1,17 @@
+---
+import layout from '@/styles/layouts.module.scss';
+import { cn } from '@/utils/cn';
+import SectionTitle from './sectionTitle.astro';
+
+interface Props {
+  title: string;
+  text: string;
+}
+
+const { title, text } = Astro.props;
+---
+
+<section class={cn('768:gap-y-20 flex flex-col gap-y-10', layout.container)}>
+  <SectionTitle title={title} text={text} />
+  <slot />
+</section>

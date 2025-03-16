@@ -1,0 +1,34 @@
+---
+import Positivus from '@/assets/svg/positivus.svg';
+import Star from '@/assets/svg/star-4.svg';
+import { cva } from 'class-variance-authority';
+
+interface Props {
+  variant?: 'dark' | 'light';
+  size?: 'sm' | 'md';
+}
+
+const { variant, size } = Astro.props;
+
+const variants = cva('flex gap-x-3', {
+  variants: {
+    variant: {
+      light: 'text-white',
+      dark: 'text-dark',
+    },
+    size: {
+      sm: '768:h-[30px] h-[24px]',
+      md: '768:h-[36px] h-[24px]',
+    },
+  },
+  defaultVariants: {
+    variant: 'dark',
+    size: 'md',
+  },
+});
+---
+
+<a class={variants({ variant, size })} href={'/'}>
+  <Star />
+  <Positivus class={'py-1'} />
+</a>

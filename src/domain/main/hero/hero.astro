@@ -1,0 +1,66 @@
+---
+import { Button } from '@/components/ui-entities/button.tsx';
+import layout from '@/styles/layouts.module.scss';
+import { cn } from '@/utils/cn';
+import HeroImg from '@/assets/img/main/hero.webp';
+import { getImage } from 'astro:assets';
+const optimizedBg = await getImage({ src: HeroImg, format: 'webp' });
+---
+
+<div class={cn('wrapper', layout.container)}>
+  <h1 class='h1'>Navigating the digital landscape for success</h1>
+  <div>
+    <div
+      style={`background-image:url(${optimizedBg.src})`}
+      class='768:max-h-none aspect-[600/500] max-h-[420px] w-full bg-contain bg-center bg-no-repeat'
+      aria-hidden='true'
+    >
+    </div>
+  </div>
+  <p class='p1'>
+    Our digital marketing agency helps businesses grow and succeed online through a range of
+    services including SEO, PPC, social media marketing, and content creation.
+  </p>
+  <Button className='768:hidden block'>Book a consultation</Button>
+</div>
+
+<style lang='scss'>
+  @use '@/styles/variables/breakpoints' as bp;
+
+  .wrapper {
+    display: grid;
+    grid-template-areas:
+      'b1'
+      '.'
+      'b2'
+      '.'
+      'b3'
+      '.'
+      'b4';
+    grid-template-rows: auto 10px auto 20px auto 40px auto;
+
+    @for $i from 1 through 4 {
+      > :nth-child(#{$i}) {
+        grid-area: b#{$i};
+      }
+    }
+  }
+
+  @media screen and (min-width: #{bp.$breakpoint-768}) {
+    .wrapper {
+      grid-template-areas:
+        'b1 b2'
+        'b3 b2';
+      grid-template-columns: minmax(0, 530px) auto;
+      grid-template-rows: auto 1fr;
+      column-gap: 8px;
+      row-gap: 36px;
+    }
+  }
+
+  @media screen and (min-width: #{bp.$breakpoint-768}) {
+    .wrapper {
+      grid-template-columns: minmax(0, 3fr) 2fr;
+    }
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import Header from './components/header/header.astro';
+import Footer from './components/footer.astro';
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link
+      rel='preload'
+      href='/fonts/space-grotesk-v16-latin-500.woff2'
+      as='font'
+      type='font/woff2'
+    />
+    <link
+      rel='preload'
+      href='/fonts/space-grotesk-v16-latin-regular.woff2'
+      as='font'
+      type='font/woff2'
+    />
+    <meta name='generator' content={Astro.generator} />
+    <title>Positivus</title>
+  </head>
+  <body class='768:pt-9 768:gap-y-35 flex flex-col gap-y-22 pt-2'>
+    <div class='768:gap-y-20 flex flex-col gap-y-10'>
+      <Header />
+      <main class='768:gap-y-35 flex flex-col gap-y-15'>
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

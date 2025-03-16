@@ -1,0 +1,19 @@
+---
+import Section from '@/components/ui-wrappers/section.astro';
+import { Fragment } from 'react';
+import { WorkingProcessAccordion } from './components/workingProcessAccordion';
+import { WorkingProcessSteps } from './workingProcessSteps';
+import Card from '@/components/ui-wrappers/card.astro';
+---
+
+<Section title='Our Working Process ' text='Step-by-Step Guide to Achieving Your Business Goals'>
+  <div class='768:gap-y-8 flex flex-col gap-y-5'>
+    {
+      WorkingProcessSteps.map((it, index) => (
+        <Card withShadow={true}>
+          <WorkingProcessAccordion client:only='react' {...it} value={`${index + 1}`} />
+        </Card>
+      ))
+    }
+  </div>
+</Section>
